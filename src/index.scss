@@ -8,10 +8,12 @@
 @import './components/molecules/Search/search.scss';
 @import './components/molecules/StarwarsCard/StarwarsCard.scss';
 @import './components/molecules/PlanetCard/planetCard.scss';
+@import './components/molecules/CharacterCard/characterCard.scss';
 
 @import './components/templates/Header/header.scss';
 @import './components/templates/Starships/starships.scss';
 @import './components/templates/Planets/planets.scss';
+@import './components/templates/Characters/characters.scss';
 
 * {
   margin: 0;

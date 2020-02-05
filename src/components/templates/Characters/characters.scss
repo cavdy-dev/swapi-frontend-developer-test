@@ -1,0 +1,22 @@
+.characters {
+  max-width: 950px;
+  padding: 20px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+
+  @include responsive(tab) {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 500px;
+  }
+
+  @include responsive(phone) {
+    grid-template-columns: repeat(1, 1fr);
+    // max-width: 320px;
+  }
+}
+
+.mtop {
+  margin-top: 60px;
+}

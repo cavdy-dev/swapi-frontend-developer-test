@@ -2,6 +2,9 @@
   max-width: 1000px;
   padding: 20px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @include responsive(tabBig) {
     max-width: 670px;
   }
