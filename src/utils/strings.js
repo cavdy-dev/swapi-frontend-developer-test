@@ -1,6 +1,8 @@
 // images path
 import logoPath from '../assets/logo.png';
 import searchPath from '../assets/svg/search.svg';
+import leftPath from '../assets/svg/left.svg';
+import rightPath from '../assets/svg/right.svg';
 import character1 from '../assets/characters/character-1.jpg';
 import character2 from '../assets/characters/character-2.jpg';
 import character3 from '../assets/characters/character-3.jpg';
@@ -18,6 +20,8 @@ import starship6 from '../assets/starships/starship-6.jpg';
 // export images
 export const logo = logoPath;
 export const searchIcon = searchPath;
+export const leftIcon = leftPath;
+export const rightIcon = rightPath;
 export const characters = [character1, character2, character3, character4];
 export const planets = [planet1, planet2, planet3];
 export const starships = [
