@@ -1,0 +1,59 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+
+  &-page {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: $colorTextLight;
+  }
+
+  &-paginate {
+    border: 2px solid $colorTextLight;
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    height: 50px;
+    border-radius: 8px;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+      height: 100%;
+
+      a {
+        text-decoration: none;
+        font-size: 15px;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 60px;
+
+        svg {
+          fill: $colorText;
+        }
+      }
+    }
+
+    li.previous {
+      border-right: 2px solid $colorTextLight;
+    }
+
+    li.active,
+    li.break {
+      display: none;
+    }
+
+    li.disabled a {
+      cursor: not-allowed;
+      svg {
+        fill: $colorTextLight !important;
+      }
+    }
+  }
+}

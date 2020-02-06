@@ -6,6 +6,7 @@ import ContentTitle from '../components/atoms/ContentTitle/contentTitle';
 import { popularCharacters } from '../utils/strings';
 import Footer from '../components/atoms/Footer/footer';
 import Select from '../components/atoms/Select/select';
+import Paginate from '../components/atoms/Pagination/paginate';
 
 const gender = ['male', 'female'];
 const view = ['grid', 'list'];
@@ -32,6 +33,12 @@ const CharactersComponent = () => (
       />
     </div>
     <Characters />
+    <Paginate
+      currentPage={1}
+      loadPage={8}
+      pageCount={50}
+      changeData={() => {}}
+    />
     <Footer />
   </>
 );
