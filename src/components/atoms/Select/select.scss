@@ -1,0 +1,43 @@
+.select {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  @include responsive(tab) {
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    max-width: 950px;
+    padding: 20px;
+    margin: 0 auto;
+
+    @include responsive(tab) {
+      max-width: 500px;
+      flex-direction: column;
+    }
+  }
+
+  &__label {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-right: 15px;
+    color: $colorText;
+  }
+
+  &__select {
+    width: 140px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 7px;
+    background: transparent;
+    border: 2px solid $colorTextLight;
+    font-size: 15px;
+    letter-spacing: 1px;
+    outline: none !important;
+    text-transform: capitalize;
+  }
+}
