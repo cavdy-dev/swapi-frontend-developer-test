@@ -13,7 +13,7 @@ const Home = () => (
   <>
     <Title page="Home" />
     <Header />
-    <Starships />
+    <Starships limit={6} />
     <Link to="/starships" />
     <Planets />
     <div className="mtop">

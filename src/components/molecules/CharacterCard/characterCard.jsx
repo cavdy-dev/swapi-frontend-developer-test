@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import WindowSizeListener from 'react-window-size-listener';
-import { characters } from '../../../utils/strings';
+import PropTypes from 'prop-types';
 
-const ff =
-  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit culpa doloremque ratione minima accusantium porro libero aliquam vero enim inventore aliquid repellat illo, rerum obcaecati suscipit consequatur mollitia velit voluptas';
-
-const CharacterCard = () => {
+const CharacterCard = ({ url, image, name, nickname, desc }) => {
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const [count, setCount] = useState(120);
 
@@ -25,18 +22,14 @@ const CharacterCard = () => {
         }}
       />
       <div className="characterCard">
-        <img
-          className="characterCard-image"
-          src={characters[0]}
-          alt="character"
-        />
+        <img className="characterCard-image" src={image} alt="character" />
         <div className="characterCard-content">
-          <h1 className="characterCard-content-name">Cavdy</h1>
-          <h3 className="characterCard-content-nickname">darklord</h3>
+          <h1 className="characterCard-content-name">{name}</h1>
+          <h3 className="characterCard-content-nickname">{nickname}</h3>
 
           <p className="characterCard-content-desc">
-            {`${ff.substring(0, count)}... `}
-            <Link className="characterCard-content-link" to="/">
+            {`${desc && desc.substring(0, count)}... `}
+            <Link className="characterCard-content-link" to={url}>
               Read More
             </Link>
           </p>
@@ -44,6 +37,14 @@ const CharacterCard = () => {
       </div>
     </>
   );
+};
+
+CharacterCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  nickname: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired
 };
 
 export default CharacterCard;
