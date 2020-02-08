@@ -1,55 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import CharacterCard from '../../molecules/CharacterCard/characterCard';
-import { characters } from '../../../utils/strings';
-import { randomImg } from '../../../utils/helpers';
+import { characters, contentDesc } from '../../../utils/strings';
+import { randomImg, objectEmpty, splitURL } from '../../../utils/helpers';
+import getCharacters from '../../../services/Actions/charactersAction';
 
-const Characters = () => {
+const Characters = ({
+  getCharacters,
+  charactersData,
+  limit,
+  gender = 'empty'
+}) => {
+  const [data, setData] = useState({});
+  useEffect(() => {
+    getCharacters();
+  }, []);
+  useEffect(() => {
+    if (!objectEmpty(charactersData)) {
+      setData(charactersData);
+    }
+  }, [charactersData]);
+
   return (
     <div className="characters">
-      <CharacterCard
-        id={1}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
-      <CharacterCard
-        id={2}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
-      <CharacterCard
-        id={3}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
-      <CharacterCard
-        id={4}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
-      <CharacterCard
-        id={5}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
-      <CharacterCard
-        id={6}
-        image={characters[randomImg(characters)]}
-        name=""
-        nickname=""
-        desc=""
-      />
+      {!objectEmpty(data) &&
+        data.results
+          .filter(result => result.gender !== gender)
+          .map((result, i) => {
+            if (i < limit) {
+              return (
+                <CharacterCard
+                  key={result.name}
+                  url={splitURL(result.url)}
+                  image={characters[randomImg(characters)]}
+                  name={result.name}
+                  nickname={result.name}
+                  desc={contentDesc}
+                />
+              );
+            }
+          })}
     </div>
   );
 };
 
-export default Characters;
+const mapStateToProps = state => ({
+  charactersData: state.characters
+});
+
+export default connect(mapStateToProps, { getCharacters })(Characters);

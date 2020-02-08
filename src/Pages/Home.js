@@ -18,7 +18,7 @@ const Home = () => (
     <Planets />
     <div className="mtop">
       <ContentTitle title={popularCharacters} />
-      <Characters />
+      <Characters limit={6} />
     </div>
     <Link to="/characters" />
     <Footer />
