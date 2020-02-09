@@ -32,8 +32,9 @@ body,
   overflow-x: hidden;
 }
 
-.slick-slide.slick-active.slick-cloned {
-  width: 320px !important;
+.slick-slide {
+  width: 100% !important;
+  max-width: 320px !important;
 }
 
 .view-content {
