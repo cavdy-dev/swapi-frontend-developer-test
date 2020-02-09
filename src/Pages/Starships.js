@@ -27,7 +27,7 @@ const StarshipsComponent = ({ getStarships, starshipsData }) => {
 
   return (
     <>
-      <Title page="Home" />
+      <Title page="Starships" />
       <Header searchHandler={searchHandler} />
       <Starships limit={9} />
       {!objectEmpty(data) ? (
