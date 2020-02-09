@@ -55,3 +55,42 @@ body,
     margin: 10px 0;
   }
 }
+
+.recent {
+  border-top: 2px solid $colorText;
+  margin-top: 20px;
+}
+
+.recently {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-title {
+    border: 2px solid $colorText;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    text-transform: capitalize;
+    font-size: 22px;
+  }
+}
+
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 0px;
+}
+
+.circular {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}

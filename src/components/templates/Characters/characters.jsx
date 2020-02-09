@@ -4,6 +4,7 @@ import CharacterCard from '../../molecules/CharacterCard/characterCard';
 import { characters, contentDesc } from '../../../utils/strings';
 import { randomImg, objectEmpty, splitURL } from '../../../utils/helpers';
 import getCharacters from '../../../services/Actions/charactersAction';
+import Loader from '../../atoms/Loader/loader';
 
 const Characters = ({
   getCharacters,
@@ -12,17 +13,21 @@ const Characters = ({
   gender = 'all'
 }) => {
   const [data, setData] = useState({});
+  const [loading, setLoader] = useState(true);
+
   useEffect(() => {
     getCharacters();
   }, []);
   useEffect(() => {
     if (!objectEmpty(charactersData)) {
       setData(charactersData);
+      setLoader(false);
     }
   }, [charactersData]);
 
   return (
     <div className="characters">
+      <Loader loading={loading} />
       {!objectEmpty(data) &&
         data.results
           .filter(result => {

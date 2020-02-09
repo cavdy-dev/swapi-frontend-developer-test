@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  position: relative;
+
   @include responsive(tab) {
     grid-template-columns: repeat(2, 1fr);
     max-width: 625px;

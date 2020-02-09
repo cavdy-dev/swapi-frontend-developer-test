@@ -9,15 +9,19 @@ import {
 } from '../../../utils/strings';
 import { randomImg, objectEmpty, splitURL } from '../../../utils/helpers';
 import getStarships from '../../../services/Actions/starshipsAction';
+import Loader from '../../atoms/Loader/loader';
 
 const Starships = ({ getStarships, starshipsData, limit }) => {
   const [data, setData] = useState({});
+  const [loading, setLoader] = useState(true);
+
   useEffect(() => {
     getStarships();
   }, []);
   useEffect(() => {
     if (!objectEmpty(starshipsData)) {
       setData(starshipsData);
+      setLoader(false);
     }
   }, [starshipsData]);
 
@@ -25,6 +29,7 @@ const Starships = ({ getStarships, starshipsData, limit }) => {
     <>
       <ContentTitle title={popularStarShips} />
       <div className="starships">
+        <Loader loading={loading} />
         {!objectEmpty(data) &&
           data.results.map((result, i) => {
             if (i < limit) {

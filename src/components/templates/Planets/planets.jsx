@@ -7,11 +7,14 @@ import ContentTitle from '../../atoms/ContentTitle/contentTitle';
 import { popularPlanets, planets } from '../../../utils/strings';
 import { randomImg, objectEmpty, splitURL } from '../../../utils/helpers';
 import getPlanets from '../../../services/Actions/PlanetsAction';
+import Loader from '../../atoms/Loader/loader';
 
 const Planets = ({ getPlanets, planetsData }) => {
   const [screenWidth, setScreenWidth] = useState(window.screen.width);
   const [slides, setSlides] = useState(3);
   const [data, setData] = useState({});
+  const [loading, setLoader] = useState(true);
+
   const settings = {
     className: 'planets',
     dots: true,
@@ -27,6 +30,7 @@ const Planets = ({ getPlanets, planetsData }) => {
   useEffect(() => {
     if (!objectEmpty(planetsData)) {
       setData(planetsData);
+      setLoader(false);
     }
   }, [planetsData]);
 
@@ -48,23 +52,27 @@ const Planets = ({ getPlanets, planetsData }) => {
         }}
       />
       <ContentTitle title={popularPlanets} />
-      <Slider {...settings}>
-        {!objectEmpty(data) &&
-          data.results.map((result, i) => {
-            if (i < 9) {
-              return (
-                <PlanetCard
-                  key={result.name}
-                  url={splitURL(result.url)}
-                  image={planets[randomImg(planets)]}
-                  title={result.name}
-                  temperature={result.climate}
-                  population={result.population}
-                />
-              );
-            }
-          })}
-      </Slider>
+      <div className="planets-container">
+        <Loader loading={loading} />
+
+        <Slider {...settings}>
+          {!objectEmpty(data) &&
+            data.results.map((result, i) => {
+              if (i < 9) {
+                return (
+                  <PlanetCard
+                    key={result.name}
+                    url={splitURL(result.url)}
+                    image={planets[randomImg(planets)]}
+                    title={result.name}
+                    temperature={result.climate}
+                    population={result.population}
+                  />
+                );
+              }
+            })}
+        </Slider>
+      </div>
     </>
   );
 };
