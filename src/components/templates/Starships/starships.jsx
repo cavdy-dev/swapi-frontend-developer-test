@@ -35,6 +35,8 @@ const Starships = ({ getStarships, starshipsData, limit }) => {
                   image={starships[randomImg(starships)]}
                   title={result.name}
                   desc={contentDesc}
+                  cargo={result.cargo_capacity}
+                  model={result.model}
                 />
               );
             }

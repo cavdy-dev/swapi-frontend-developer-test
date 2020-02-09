@@ -38,7 +38,7 @@ const Characters = ({
                   url={splitURL(result.url)}
                   image={characters[randomImg(characters)]}
                   name={result.name}
-                  nickname={result.gender}
+                  nickname={`${result.gender} - ${result.birth_year}`}
                   desc={contentDesc}
                 />
               );

@@ -10,14 +10,24 @@
     image-rendering: pixelated;
   }
 
-  &-name {
+  &-wrapper {
     position: absolute;
     bottom: 25px;
     left: 0;
     width: 100%;
     text-align: center;
-    font-size: 30px;
-    text-transform: capitalize;
-    color: $colorGreyLight;
+
+    &-name {
+      font-size: 30px;
+      text-transform: capitalize;
+      color: $colorGreyLight;
+    }
+
+    &-temp,
+    &-pop {
+      color: $colorGreyLight;
+      font-size: 20px;
+      text-transform: capitalize;
+    }
   }
 }
