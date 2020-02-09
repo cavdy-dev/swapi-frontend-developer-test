@@ -17,6 +17,8 @@ const StarshipsComponent = ({ getStarships, starshipsData }) => {
     }
   }, [starshipsData]);
 
+  const searchHandler = ({ target: { value } }) => getStarships(1, value);
+
   const paginate = page => {
     page = page.selected + 1;
     getStarships(page);
@@ -26,7 +28,7 @@ const StarshipsComponent = ({ getStarships, starshipsData }) => {
   return (
     <>
       <Title page="Home" />
-      <Header />
+      <Header searchHandler={searchHandler} />
       <Starships limit={9} />
       {!objectEmpty(data) ? (
         <Paginate

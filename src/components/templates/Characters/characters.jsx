@@ -9,7 +9,7 @@ const Characters = ({
   getCharacters,
   charactersData,
   limit,
-  gender = 'empty'
+  gender = 'all'
 }) => {
   const [data, setData] = useState({});
   useEffect(() => {
@@ -25,7 +25,11 @@ const Characters = ({
     <div className="characters">
       {!objectEmpty(data) &&
         data.results
-          .filter(result => result.gender !== gender)
+          .filter(result => {
+            if (gender === 'all') return result;
+            else if (gender === 'robot') return result.gender === 'n/a';
+            return result.gender === gender;
+          })
           .map((result, i) => {
             if (i < limit) {
               return (
@@ -34,7 +38,7 @@ const Characters = ({
                   url={splitURL(result.url)}
                   image={characters[randomImg(characters)]}
                   name={result.name}
-                  nickname={result.name}
+                  nickname={result.gender}
                   desc={contentDesc}
                 />
               );
