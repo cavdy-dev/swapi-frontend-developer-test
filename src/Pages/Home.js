@@ -16,6 +16,7 @@ const Home = () => (
     <Starships limit={6} />
     <Link to="/starships" />
     <Planets />
+    <Link to="/planets" />
     <div className="mtop">
       <ContentTitle title={popularCharacters} />
       <Characters limit={6} />

@@ -3,6 +3,7 @@ import NotFound from './Pages/NotFound';
 import ViewContent from './Pages/ViewContent';
 import Starships from './Pages/Starships';
 import Characters from './Pages/Characters';
+import Planets from './Pages/Planets';
 
 export default [
   {
@@ -24,6 +25,11 @@ export default [
     name: 'Characters',
     path: '/characters',
     component: Characters
+  },
+  {
+    name: 'Planets',
+    path: '/planets',
+    component: Planets
   },
   {
     name: 'Not Found',
