@@ -4,7 +4,7 @@ import Logo from '../../atoms/Logo/logo';
 import Nav from '../../molecules/Nav/nav';
 import Search from '../../molecules/Search/search';
 
-const Header = () => (
+const Header = ({ searchHandler }) => (
   <header className="header">
     <Nav />
     <div className="header__content">
@@ -13,7 +13,7 @@ const Header = () => (
         <p className="header__content-logo-text">{directory}</p>
       </div>
       <p className="header__content-desc">{desc}</p>
-      <Search />
+      <Search searchHandler={searchHandler} />
     </div>
   </header>
 );

@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://cors-anywhere.herokuapp.com/https://swapi.co/api'
+  baseURL: 'https://swapi.co/api'
 });

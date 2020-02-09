@@ -11,13 +11,13 @@ import Paginate from '../components/atoms/Pagination/paginate';
 import { objectEmpty, pageCount } from '../utils/helpers';
 import getCharacters from '../services/Actions/charactersAction';
 
-const gender = ['male', 'female'];
+const gender = ['all', 'male', 'female', 'robot'];
 const view = ['grid', 'list'];
 
 const CharactersComponent = ({ getCharacters, charactersData }) => {
   const [data, setData] = useState({});
   const [page, setPage] = useState(1);
-  const [genderSelect, setGenderSelect] = useState('');
+  const [genderSelect, setGenderSelect] = useState(gender[0]);
   useEffect(() => {
     if (!objectEmpty(charactersData)) {
       setData(charactersData);
@@ -25,6 +25,7 @@ const CharactersComponent = ({ getCharacters, charactersData }) => {
   }, [charactersData]);
 
   const handleChange = ({ target: { value } }) => setGenderSelect(value);
+  const searchHandler = ({ target: { value } }) => getCharacters(1, value);
 
   const paginate = page => {
     page = page.selected + 1;
@@ -35,7 +36,7 @@ const CharactersComponent = ({ getCharacters, charactersData }) => {
   return (
     <>
       <Title page="Characters" />
-      <Header />
+      <Header searchHandler={searchHandler} />
       <ContentTitle title={popularCharacters} />
       <div className="select-wrapper">
         <Select
