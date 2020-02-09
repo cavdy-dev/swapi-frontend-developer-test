@@ -5,18 +5,33 @@ import Header from '../components/templates/Header/viewContentHeader';
 import Footer from '../components/atoms/Footer/footer';
 import { objectEmpty } from '../utils/helpers';
 import getContent from '../services/Actions/singleContentAction';
+import RecentlyViewed from '../components/templates/RecentlyViewed/recentlyViewed';
+import Circular from '../components/atoms/Loader/circular';
 
-const ViewContent = ({ match: { url }, getContent, singleContent }) => {
+const ViewContent = ({
+  match: {
+    url,
+    params: { type }
+  },
+  getContent,
+  singleContent
+}) => {
   const [data, setData] = useState({});
+  const [loading, setLoader] = useState(true);
+
   useEffect(() => {
     getContent(url);
   }, []);
   useEffect(() => {
-    setData(singleContent);
+    if (!objectEmpty(singleContent)) {
+      setData(singleContent);
+      setLoader(false);
+    }
   }, [singleContent]);
 
   return (
     <>
+      <Circular loading={loading} />
       {!objectEmpty(data) ? (
         <>
           <Title page={data.name} />
@@ -30,6 +45,10 @@ const ViewContent = ({ match: { url }, getContent, singleContent }) => {
                 </li>
               ))}
             </ul>
+            <div className="recently">
+              <h2 className="recently-title">Recently viewed {type}</h2>
+            </div>
+            <RecentlyViewed type={type} />
           </div>
           <Footer />
         </>

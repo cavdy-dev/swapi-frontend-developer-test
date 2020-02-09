@@ -6,6 +6,8 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 70px;
+  position: relative;
+
   @include responsive(tabBig) {
     max-width: 670px;
   }
@@ -14,6 +16,10 @@
   }
   @include responsive(phone) {
     max-width: 320px;
+  }
+
+  &-container {
+    position: relative;
   }
 }
 
