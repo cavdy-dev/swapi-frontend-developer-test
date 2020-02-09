@@ -27,7 +27,7 @@ const PlanetsComponent = ({ getPlanets, planetsData }) => {
 
   return (
     <>
-      <Title page="Home" />
+      <Title page="Planets" />
       <Header searchHandler={searchHandler} />
       <PlanetsGrid />
       {!objectEmpty(data) ? (
