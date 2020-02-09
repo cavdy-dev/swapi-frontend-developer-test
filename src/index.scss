@@ -32,10 +32,14 @@ body,
   overflow-x: hidden;
 }
 
+.slick-slide.slick-active.slick-cloned {
+  width: 320px !important;
+}
+
 .view-content {
-  width: 100%;
   max-width: 965px;
   margin: 0 auto;
+  padding: 0 10px;
 
   &-title {
     font-size: 30px;
