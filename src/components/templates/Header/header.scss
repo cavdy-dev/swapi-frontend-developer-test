@@ -36,6 +36,10 @@
     position: absolute;
     bottom: 70px;
     left: 80px;
+    @include responsive(phone) {
+      font-size: 25px;
+      left: 20px;
+    }
 
     &::before {
       content: '';
